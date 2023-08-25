@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Alert, Text, View, BackHandler } from 'react-native';
 
 import Animated, 
 { useAnimatedStyle, 
@@ -240,10 +240,16 @@ export function Quiz() {
     setIsLoading(false);
   }, []);
 
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', handleStop)
+
+    return () => backHandler.remove()
+  }, [])
 
   if (isLoading) {
     return <Loading />
   }
+
 
   return (
     <View style={styles.container}>
