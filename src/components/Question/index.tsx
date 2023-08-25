@@ -68,8 +68,8 @@ export function Question({ question, alternativeSelected, setAlternativeSelected
       entering={enteringKeyFrame.duration(400)}
       exiting={exitingKeyFrame.duration(400).withCallback((finished) => {
         'worklet'
-        if(finished){
-          runOnJS(onUnmount)
+        if(finished) {
+          runOnJS(onUnmount)()
         }
       })}
     >

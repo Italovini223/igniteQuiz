@@ -109,10 +109,9 @@ export function Quiz() {
     }
 
     if (quiz.questions[currentQuestion].correct === alternativeSelected) {
-      setPoints(prevState => prevState + 1);
-      await playSound(true)
       setStatusReplay(1)
-      handleNextQuestion()
+      await playSound(true)
+      setPoints(prevState => prevState + 1);
     } else {
       await playSound(false)
       setStatusReplay(2)
@@ -245,6 +244,13 @@ export function Quiz() {
 
     return () => backHandler.remove()
   }, [])
+
+  useEffect(() => {
+    if(quiz.questions){
+      handleNextQuestion()
+    }
+  }, [points])
+
 
   if (isLoading) {
     return <Loading />
