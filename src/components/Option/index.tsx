@@ -12,7 +12,7 @@ import {
   BlurMask,
   Circle,
   Easing
-} from '@shopify/react-native-skia/lib/typescript/src';
+} from '@shopify/react-native-skia';
 
 import { THEME } from '../../styles/theme';
 
